@@ -1,3 +1,4 @@
+//TC: O(N)
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
        HashMap<Integer, Boolean> map = new HashMap<>();
