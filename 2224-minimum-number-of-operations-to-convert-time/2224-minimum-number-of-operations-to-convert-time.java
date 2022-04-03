@@ -20,21 +20,12 @@ class Solution {
         
     }
     private int toMins(String s) {
-        String hours = "";
-        String mins = "";
         int i = 0;
         while(s.charAt(i)!=':') {
-            hours += s.charAt(i);
             i++;
         }
-        i++;
-        while(i<s.length()) {
-            mins += s.charAt(i);
-            i++;
-        }
-        int minutes = 0;
-        minutes = Integer.valueOf(hours) * 60 + Integer.valueOf(mins);
-        return minutes;
-        
+        String hours = s.substring(0, i);
+        String mins = s.substring(i+1, s.length());
+        return Integer.valueOf(hours) * 60 + Integer.valueOf(mins);
     }
 }
