@@ -27,7 +27,7 @@ class Solution {
             second = second.next;
             i++;
         }
-        System.out.print(first.val + " "+ second.val);
+        
         int temp = first.val;
         first.val = second.val;
         second.val = temp;
