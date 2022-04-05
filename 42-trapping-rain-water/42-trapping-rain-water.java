@@ -19,12 +19,6 @@ class Solution {
             maxi = Math.max(maxi, height[i]);
             suffixMax[i] = maxi;
         }
-        // for(int i: prefixMax)
-        //     System.out.print(i+" ");
-        // System.out.println();
-        // for(int i: suffixMax)
-        //     System.out.print(i+" ");
-        System.out.println(n+ " "+prefixMax.length + " "+ suffixMax.length);
         int ans = 0;
         for(int i=0;i<n;i++) {
             ans += Math.min(prefixMax[i],suffixMax[i]) - height[i];
