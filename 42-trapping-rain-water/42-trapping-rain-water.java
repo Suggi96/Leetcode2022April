@@ -5,8 +5,8 @@ class Solution {
         //right[i] -> maximum height of building from i to n-1 (right direction)
         
         int n = height.length;
-        int[] prefixMax = new int[n];
-        int[] suffixMax = new int[n];
+        int[] prefixMax = new int[n]; //indicates max height from i to 0 (left dir)
+        int[] suffixMax = new int[n]; //indicates max hieght from i to n-1 (right dir)
         prefixMax[0] = height[0];
         int maxi = height[0];
         for(int i=1;i<n;i++) {
