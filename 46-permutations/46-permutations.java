@@ -1,23 +1,23 @@
 class Solution {
     List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
-        boolean[] freq = new boolean[nums.length];
-        backTrack(nums, new ArrayList<>(), freq);
+        boolean[] used = new boolean[nums.length];
+        backTrack(nums, new ArrayList<>(), used);
         return res;
     }
-    private void backTrack(int[] nums, List<Integer> permute, boolean[] freq) {
+    private void backTrack(int[] nums, List<Integer> permute, boolean[] used) {
         //base case
         if(permute.size()==nums.length) {
             res.add(new ArrayList<>(permute));
             return;
         }
         for(int i=0;i<nums.length;i++) {
-            if(freq[i]==false) {
-                freq[i] = true;
+            if(used[i]==false) {
+                used[i] = true;
                 permute.add(nums[i]);
-                backTrack(nums, permute, freq);
+                backTrack(nums, permute, used);
                 permute.remove(permute.size()-1);
-                freq[i] = false;
+                used[i] = false;
             }
         }
     }
