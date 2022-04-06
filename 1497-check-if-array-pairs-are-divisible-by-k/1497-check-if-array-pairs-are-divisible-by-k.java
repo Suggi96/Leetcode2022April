@@ -2,7 +2,8 @@ class Solution {
     public boolean canArrange(int[] arr, int k) {
         int[] freq = new int[k];
         for(int i: arr) {
-            int currentRem = ((i%k)+k)%k;
+// (a%b) = ((a%b) + b)%b this works for both negative and positive numbers
+            int currentRem = ((i%k) + k)%k; 
             freq[currentRem]++;
         }
         for(int i=0;i<=k/2;i++) {
