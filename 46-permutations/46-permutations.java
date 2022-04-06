@@ -5,18 +5,18 @@ class Solution {
         backTrack(nums, new ArrayList<>(), used);
         return res;
     }
-    private void backTrack(int[] nums, List<Integer> permute, boolean[] used) {
+    private void backTrack(int[] nums, List<Integer> list, boolean[] used) {
         //base case
-        if(permute.size()==nums.length) {
-            res.add(new ArrayList<>(permute));
+        if(list.size()==nums.length) {
+            res.add(new ArrayList<>(list));
             return;
         }
         for(int i=0;i<nums.length;i++) {
             if(used[i]==false) {
                 used[i] = true;
-                permute.add(nums[i]);
-                backTrack(nums, permute, used);
-                permute.remove(permute.size()-1);
+                list.add(nums[i]);
+                backTrack(nums, list, used);
+                list.remove(list.size()-1);
                 used[i] = false;
             }
         }
