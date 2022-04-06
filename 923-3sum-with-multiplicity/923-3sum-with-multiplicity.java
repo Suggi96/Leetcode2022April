@@ -3,7 +3,7 @@ class Solution {
         Map<Integer, Long> map = new HashMap<>();
         int mod = (int)(1e9 + 7);
         for(int i: arr)
-            map.put(i, map.getOrDefault(i, (long)0)+1);
+            map.put(i, map.getOrDefault(i, 0l)+1l);
         long result = 0;
         for(Integer x: map.keySet()) {
             for(Integer y: map.keySet()) {
