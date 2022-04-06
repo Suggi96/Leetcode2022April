@@ -5,7 +5,7 @@ class Solution {
         HashSet<Character> set = new HashSet<>();
         for(int i=0;i<rows;i++) {
             for(int j=0;j<cols;j++) {
-                if(dfs(i, j, 0, board, rows, cols, word))
+                if(board[i][j]==word.charAt(0) && dfs(i, j, 0, board, rows, cols, word))
                     return true;
             }
         }
