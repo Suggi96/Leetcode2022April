@@ -1,6 +1,7 @@
 class Solution {
     public int threeSumMulti(int[] arr, int target) {
         Map<Integer, Long> map = new HashMap<>();
+        int mod = (int)(1e9 + 7);
         for(int i: arr)
             map.put(i, map.getOrDefault(i, (long)0)+1);
         long result = 0;
@@ -21,9 +22,10 @@ class Solution {
                         result += xfreq * yfreq * zfreq;
                     }
                 }
+                result = result % mod;
             }
             
         }
-        return (int)(result%1000000007);
+        return (int)(result);
     }
 }
