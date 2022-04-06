@@ -1,26 +1,29 @@
 class Solution {
     public int threeSumMulti(int[] arr, int target) {
-        int mod = (int)(1e9 + 7);
+        Map<Integer, Long> map = new HashMap<>();
+        for(int i: arr)
+            map.put(i, map.getOrDefault(i, (long)0)+1);
         long result = 0;
-        long[] c = new long[101];
-        for(int i: arr) 
-            c[i]++;
-        for(int i=0;i<=100;i++) {
-            for(int j=i;j<=100;j++) {
-                int k = target - i - j;
-                if(k<0 || k>100)
-                    continue;
-                if(i==j && j==k) {
-                    result+= (c[i] * (c[i]-1) * (c[i]-2) / 6);
-                }
-                else if(i==j && j!=k) {
-                    result += ((c[i] * (c[i]-1)/2) * c[k]);
-                }
-                else if(i<j && j<k) {
-                    result += (c[i] * c[j] *c[k]);
+        for(Integer x: map.keySet()) {
+            for(Integer y: map.keySet()) {
+                int z = target - x - y;
+                if(map.containsKey(z)) {
+                    long xfreq = map.get(x);
+                    long yfreq = map.get(y);
+                    long zfreq = map.get(z);
+                    if(x==y && y==z) { // all 3 nums are equal
+                        result += (xfreq * (xfreq-1) * (xfreq-2))/6;
+                    }
+                    else if(x==y && y!=z) { //2 nums are equal
+                        result += (xfreq * (xfreq-1))/2 * zfreq;
+                    }
+                    else if(x<y && y<z) { //all 3 nums are not equal
+                        result += xfreq * yfreq * zfreq;
+                    }
                 }
             }
+            
         }
-        return (int)(result % mod);
+        return (int)(result%1000000007);
     }
 }
