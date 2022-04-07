@@ -1,5 +1,6 @@
 class Solution {
     public int lastStoneWeight(int[] stones) {
+        //Construct a max heap
         PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> b-a);
         for(int i: stones)
             pq.add(i);
