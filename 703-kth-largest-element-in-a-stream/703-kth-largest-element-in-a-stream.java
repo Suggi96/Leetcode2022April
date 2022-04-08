@@ -3,7 +3,7 @@ class KthLargest {
     private int n;
     public KthLargest(int k, int[] nums) {
         n = k; //size of pq assigned as n
-        pq = new PriorityQueue<>();
+        pq = new PriorityQueue<>(); //min heap
         for(int i: nums) {
             add(i);
         }
@@ -12,7 +12,8 @@ class KthLargest {
     public int add(int val) {
         pq.offer(val);
         if(pq.size()>n) {
-            pq.poll();
+            while(pq.size()>n) 
+                pq.poll();
         }
         return pq.peek();
     }
