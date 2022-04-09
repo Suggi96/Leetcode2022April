@@ -16,6 +16,8 @@ class Solution {
                 ans[i] = e.getKey();
                 i++;
             }
+            else
+                break;
         }
 
         return ans;
