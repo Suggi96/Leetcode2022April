@@ -1,5 +1,7 @@
 class Solution {
     public int thirdMax(int[] nums) {
+        if (nums.length==1) return nums[0];
+        else if(nums.length==2) return Math.max(nums[0], nums[1]);
         Set<Integer> set = new HashSet<>();
         for(int i: nums)
             set.add(i);
