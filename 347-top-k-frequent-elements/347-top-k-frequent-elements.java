@@ -9,18 +9,15 @@ class Solution {
         Collections.sort(list, (a, b) -> {
            return b.getValue() - a.getValue(); 
         });
-        List<Integer> temp = new ArrayList<>();
+        int[] ans = new int[k];
         int i = 0;
         for(Map.Entry<Integer, Integer> e: list) {
             if(i<k) {
-                temp.add(e.getKey());
+                ans[i] = e.getKey();
                 i++;
             }
         }
-        int[] ans = new int[temp.size()];
-        for(i=0;i<temp.size();i++) {
-            ans[i] = temp.get(i);
-        }
+
         return ans;
     }
 }
