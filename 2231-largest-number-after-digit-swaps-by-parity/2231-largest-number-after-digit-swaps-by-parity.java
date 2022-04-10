@@ -1,28 +1,24 @@
 class Solution {
     public int largestInteger(int num) {
-        PriorityQueue<Integer> odd = new PriorityQueue<>();
-        PriorityQueue<Integer> even = new PriorityQueue<>();
-       int dig = num;
-        while(num >0){
-            int val = num%10;
-            if(val%2==0){
-                even.add(val);
-            }else{
-                odd.add(val);
-            }
-            num = num/10;
+        String s = num + "";
+        //create 2 maxheaps
+        PriorityQueue<Integer> odd = new PriorityQueue<>((a,b) -> b-a);
+        PriorityQueue<Integer> even = new PriorityQueue<>((a,b) -> b-a);
+        for(char c: s.toCharArray()) {
+            int val = c - '0';
+            if(val%2==0)
+                even.offer(val);
+            else
+                odd.offer(val);
         }
-        StringBuilder res = new StringBuilder();
-        while(dig >0){
-            int val = dig%10;
-            if(val%2==0){
-                res.append(even.remove());
-            }else{
-                res.append(odd.remove());
-            }
-            dig = dig/10;
+        String ans = "";
+        for(char c: s.toCharArray()) {
+            int val = c - '0';
+            if(val%2==0)
+                ans += even.poll();
+            else
+                ans += odd.poll();
         }
-        res.reverse();
-        return Integer.parseInt(res.toString());
+        return Integer.parseInt(ans);
     }
 }
