@@ -16,15 +16,17 @@ class Solution {
             else
                 st2.push(t.charAt(i));
         }
-        String x = new String();
-        String y = new String();
+        StringBuilder x = new StringBuilder();
+        StringBuilder y = new StringBuilder();
         for(char c: st1) {
          //   System.out.print(c);
-             x += c;
+            x.append(c);
         }
            
         for(char c: st2) 
-            y += c;
-        return x.equals(y);
+            y.append(c);
+        if(x.toString().equals(y.toString()))
+            return true;
+        return false;
     }
 }
