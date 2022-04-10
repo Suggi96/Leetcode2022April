@@ -3,7 +3,7 @@ class Solution {
         Stack<Integer> st = new Stack<>();
         for(String s: ops) {
             if(!s.equals("+") && !s.equals("D") && !s.equals("C")) {
-                int x = Integer.parseInt(s);
+                int x = Integer.valueOf(s);
                 st.push(x);
             }
             else if(s.equals("+")) {
