@@ -25,8 +25,6 @@ class Solution {
            
         for(char c: st2) 
             y.append(c);
-        if(x.toString().equals(y.toString()))
-            return true;
-        return false;
+        return x.compareTo(y) == 0;
     }
 }
