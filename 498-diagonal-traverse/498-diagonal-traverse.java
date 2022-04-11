@@ -24,7 +24,8 @@ class Solution {
         int p = 0;
         int[] ans = new int[m*n];
         //copying hashmap values to ans array
-        //also we need reverse the even keys as to print in updirection
+        //also we need reverse the even keys as to print in up direction
+        //So call reverse for k = 0 , 2 , 4 etc
         for(int k=0;k<map.size();k++) {
             List<Integer> al = map.get(k);
             if(k%2==0) {
