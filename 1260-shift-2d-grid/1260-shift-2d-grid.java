@@ -9,7 +9,7 @@ class Solution {
             }
         }
             
-        //shift each element in oneD list by k positions
+        //shift each element in oneD list by k positions and save it in             shifted array
         //formula = (index + k) % m*n . here m*n=size of 2d grid
         int[] shifted = new int[m*n]; //creating to prevent overwriting in 
                                       // oneD list 
@@ -19,7 +19,7 @@ class Solution {
             shifted[newIndex] = curVal;
         }
 
-        //generating 1D list into 2D list
+        //Copy 1d array shifted into 2D list res
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> row = new ArrayList<>();
         int c = 0;
