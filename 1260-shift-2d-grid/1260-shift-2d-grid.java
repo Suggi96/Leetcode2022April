@@ -12,13 +12,6 @@ class Solution {
                 shiftedGrid[newR][newC] = grid[r][c]; //save curVal in newR newC idx
             }
         }
-       for(int i=0;i<m;i++) {
-           List<Integer> temp = new ArrayList<>();
-           for(int j=0;j<n;j++) {
-            temp.add(shiftedGrid[i][j]);
-           }
-           ans.add(new ArrayList<>(temp));
-    }
-         return ans;
+       return (List)Arrays.asList(shiftedGrid);
     }
 }
