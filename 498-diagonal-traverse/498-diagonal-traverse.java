@@ -8,18 +8,32 @@ class Solution {
             Map<Integer, List<Integer>> map = new HashMap<>();
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
-                    map.computeIfAbsent(i + j, l -> new ArrayList<>()).add(matrix[i][j]);
+                    int key = i+j;
+                    if(map.containsKey(key)) {
+                        List<Integer> al = map.get(key);
+                        al.add(matrix[i][j]);
+                        map.put(key, al);
+                    }
+                    else {
+                        List<Integer> al = new ArrayList<>();
+                        al.add(matrix[i][j]);
+                        map.put(key, al);
+                    }
                 }
             }
-
-            List<Integer> result = new ArrayList();
-            for (int k = 0; k < m + n - 1; k++) {
-                List<Integer> list = map.get(k);
-                if (k % 2 == 0)
-                    Collections.reverse(list);
-                result.addAll(list);
+        int p = 0;
+        int[] ans = new int[m*n];
+        //copying hashmap values to ans array
+        //also we need reverse the even keys as to print in updirection
+        for(int k=0;k<map.size();k++) {
+            List<Integer> al = map.get(k);
+            if(k%2==0) {
+                Collections.reverse(al);
             }
-
-            return result.stream().mapToInt(x -> x).toArray();
+            for(int i: al) {
+                ans[p++] = i;
+            }
+        }
+        return ans;
     }
 }
