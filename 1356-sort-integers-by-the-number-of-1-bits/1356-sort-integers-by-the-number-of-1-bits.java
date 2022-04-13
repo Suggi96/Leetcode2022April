@@ -2,20 +2,19 @@ class Solution {
     public int[] sortByBits(int[] arr) {
         int n = arr.length;
         int[] ans = new int[n];
-        HashMap<Integer, Integer> map = new HashMap<>();
+        List<Pair<Integer, Integer>> hash = new ArrayList<>();
         for(int i=0;i<n;i++) {
             int count = countSet(arr[i]);
-            map.put(i, count);
+            hash.add(new Pair<Integer, Integer>(arr[i], count));
         }
-        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
-        Collections.sort(list, (a, b) -> {
-            if(a.getValue()==b.getValue())
-                return arr[a.getKey()] - arr[b.getKey()];
+        Collections.sort(hash, (a, b) -> {
+           if(a.getValue()==b.getValue())
+               return a.getKey() - b.getKey();
             return a.getValue() - b.getValue();
         });
         int idx = 0;
-        for(Map.Entry<Integer, Integer> e: list) {
-            ans[idx++] = arr[e.getKey()];
+        for(Pair<Integer, Integer> p: hash) {
+            ans[idx++] = p.getKey();
         }
         return ans;
     }
