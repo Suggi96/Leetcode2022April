@@ -1,6 +1,5 @@
 class Solution {
     public int[][] generateMatrix(int n) {
-        int[][] ans = new int[n][n];
         int top = 0, bottom = n-1, left = 0, right = n-1;
         int dir = 0, val = 1;
         int[][] grid = new int[n][n];
@@ -31,9 +30,6 @@ class Solution {
             }
             dir = (dir + 1)%4;
         }
-        for(int i=0;i<n;i++)
-            for(int j=0;j<n;j++)
-                ans[i][j] = grid[i][j];
-        return ans;
+        return grid;
     }
 }
