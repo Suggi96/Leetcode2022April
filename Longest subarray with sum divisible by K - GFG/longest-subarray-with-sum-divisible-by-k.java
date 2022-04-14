@@ -28,6 +28,9 @@ class Solution{
                 ans = Math.max(ans, i - map.get(rem));
             }
             else {
+                //update rem with i only first time because we want to 
+                //store left most occurrance of rem in i because that only 
+                //gives longest length
                 map.put(rem, i);
             }
         }
