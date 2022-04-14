@@ -47,7 +47,7 @@ class Solution
         */
         HashMap<Integer, Integer> map = new HashMap<>();
         for(int i=0;i<size;i++) {
-            int a = n +  arr[i];
+            int a = n + arr[i];
             int b = arr[i] - n;
             if(map.containsKey(a) || map.containsKey(b))
                 return true;
