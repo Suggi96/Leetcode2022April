@@ -44,6 +44,7 @@ class Solution
         /*a-b=n so check for
         n + b or a - n in map because for test case n = 7 we can have pair
         (17, 10) ie 17-10 = 7 or (10, 3) = ie 10 - 3 = 7
+        Also in diff (a,b) = (b,a) eg (10,3) is same as (3,10) for n = 7
         */
         HashMap<Integer, Integer> map = new HashMap<>();
         for(int i=0;i<size;i++) {
