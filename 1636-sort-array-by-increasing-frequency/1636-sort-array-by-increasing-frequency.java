@@ -16,9 +16,8 @@ class Solution {
         int idx = 0;
         for(Pair<Integer, Integer> p: list) {
             int freq = p.getValue();
-            while(freq!=0) {
+            while(freq-- > 0) {
                 ans[idx++] = p.getKey();
-                freq--;
             }
         }
         return ans;
