@@ -1,3 +1,4 @@
+//TC:  O(n2)
 class Solution {
     public boolean repeatedSubstringPattern(String s) {
         int len = s.length();
