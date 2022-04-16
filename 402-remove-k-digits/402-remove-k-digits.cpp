@@ -33,7 +33,6 @@ public:
           
           reverse(res.begin(), res.end());
           //to handle leading zeros 00012 should become 12 or 0000 should become 0
-        int idx = 0;
         while(res.length()>1 && res[0]=='0') {
             res.erase(res.begin());
         }
