@@ -4,28 +4,22 @@ class Solution {
         int rounds = 0;
         for(int i: tasks) 
             map.put(i, map.getOrDefault(i, 0)+1);
-        if(invalid(map))
-            return -1;
-        for(int i=0;i<tasks.length;i++) {
-            if(map.get(tasks[i])>0) {
-                int freq = map.get(tasks[i]);
-                if(freq%3==0 || freq%2==1) //odd case
-                    map.put(tasks[i], freq-3);
-                else //even case
-                    map.put(tasks[i], freq-2);
-                rounds++;
+        int count = 0;
+        for(int freq: map.values()) {
+            if(freq==1)
+                return -1;
+            while(freq>0) {
+                if(freq%3==0) {
+                    count += freq/3;
+                    break;
+                }
+                else {
+                    freq = freq - 2;
+                    count++;
+                }
             }
-            
         }
-        return rounds;
+        return count;
         
     }
-        
-    private boolean invalid(HashMap<Integer, Integer> map) {
-        for(Map.Entry<Integer, Integer> e: map.entrySet()) {
-            if(e.getValue()<2)
-                return true;
-        }
-        return false;
-    } 
 }
