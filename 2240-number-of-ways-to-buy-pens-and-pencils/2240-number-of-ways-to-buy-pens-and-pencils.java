@@ -1,6 +1,5 @@
 class Solution {
     public long waysToBuyPensPencils(int total, int cost1, int cost2) {
-        long ways = 0;
         if(cost1>total && cost2>total)
             return 1;
         
