@@ -4,7 +4,6 @@ class Solution {
             return s;
         List<String> list = new ArrayList<>();
         int i = 0;
-        StringBuilder sb = new StringBuilder();
         while(true) {
             while(i<s.length()) {
                 if(i+k>=s.length()) {
@@ -16,7 +15,6 @@ class Solution {
             i = i+k;
         }
             for(String x: list)
-                System.out.print(x+" ");
             System.out.println();
             s = merge(list);
             list.clear();
@@ -32,11 +30,9 @@ class Solution {
         for(String s: list) {
             for(char c: s.toCharArray())
                 sum += Integer.parseInt(String.valueOf(c));
-            System.out.println(sum);
             res.append(sum);
             sum = 0;
         }
-        System.out.println("res="+res.toString());
         return res.toString();
     }
 }
