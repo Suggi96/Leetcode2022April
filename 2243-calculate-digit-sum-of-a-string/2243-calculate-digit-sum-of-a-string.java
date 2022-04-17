@@ -14,8 +14,6 @@ class Solution {
             }
             i = i+k;
         }
-            for(String x: list)
-            System.out.println();
             s = merge(list);
             list.clear();
             i = 0;
