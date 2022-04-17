@@ -1,36 +1,22 @@
 class Solution {
     public String digitSum(String s, int k) {
-        if(k>=s.length())
-            return s;
-        List<String> list = new ArrayList<>();
-        int i = 0;
-        while(true) {
-            while(i<s.length()) {
-                if(i+k>=s.length()) {
-                list.add(s.substring(i));
-            }
-            else {
-                list.add(s.substring(i, i+k));
-            }
-            i = i+k;
-        }
-            s = merge(list);
-            list.clear();
-            i = 0;
-            if(s.length()<=k)
-                break;
+                while (s.length() > k) {
+            s = replaceWithSum(s, k);
         }
         return s;
     }
-    private String merge(List<String> list) {
-        StringBuilder res = new StringBuilder();
-        int sum = 0;
-        for(String s: list) {
-            for(char c: s.toCharArray())
-                sum += Integer.parseInt(String.valueOf(c));
-            res.append(sum);
-            sum = 0;
+
+    private String replaceWithSum(String s, int k) {
+        StringBuilder sb = new StringBuilder();
+        int currentSum = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            currentSum += s.charAt(i) - '0';
+            if ((i + 1) % k == 0 || i == s.length() - 1) {
+                sb.append(currentSum);
+                currentSum = 0;
+            }
         }
-        return res.toString();
+        return sb.toString();
     }
 }
