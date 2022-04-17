@@ -14,21 +14,19 @@
  * }
  */
 class Solution {
-    TreeNode cur = null;
+    TreeNode head = new TreeNode(-1);
+    TreeNode ptr = head;
     public TreeNode increasingBST(TreeNode root) {
-        if(root==null) return null;
-        TreeNode dummy = new TreeNode(0);
-        cur = dummy;
         inOrder(root);
-        return dummy.right;
+        return ptr.right;
     }
-    private void inOrder(TreeNode node) {
-        if(node==null)
+    private void inOrder(TreeNode root) {
+        if(root==null)
             return;
-        inOrder(node.left);
-        node.left = null;
-        cur.right = node;
-        cur = node;
-        inOrder(node.right);
+        inOrder(root.left);
+        head.right = new TreeNode(root.val);
+        head = head.right;
+        inOrder(root.right);
+        return;
     }
 }
