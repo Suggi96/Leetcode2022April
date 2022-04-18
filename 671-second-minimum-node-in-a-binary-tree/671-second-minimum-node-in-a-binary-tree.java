@@ -22,9 +22,6 @@ class Solution {
         if(s.size()<2)
             return -1;
         int res = 0, i=0;
-        // for(int val: s)
-        //     System.out.println(val);
-        
         for(int val: s) {
             if(i<2) {
                 res = val;
