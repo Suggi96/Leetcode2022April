@@ -14,29 +14,31 @@
  * }
  */
 class Solution {
-    Set<Integer> s = new TreeSet<>();
-    public int findSecondMinimumValue(TreeNode root) {
-        inOrder(root);
-        if(s.size()<2)
+public int findSecondMinimumValue(TreeNode root) {
+            if (root == null) {
+                return -1;
+            }
+            Set<Integer> set = new TreeSet<>();
+            dfs(root, set);
+            Iterator<Integer> iterator = set.iterator();
+            int count = 0;
+            while (iterator.hasNext()) {
+                count++;
+                int result = iterator.next();
+                if (count == 2) {
+                    return result;
+                }
+            }
             return -1;
-        int res = 0, i=0;
-        for(int val: s) {
-            if(i<2) {
-                res = val;
-            }
-            else {
-                break;
-            }
-            i++;
         }
-            
-        return res;
-    }
-    private void inOrder(TreeNode root) {
-        if(root==null)
+
+        private void dfs(TreeNode root, Set<Integer> set) {
+            if (root == null) {
+                return;
+            }
+            set.add(root.val);
+            dfs(root.left, set);
+            dfs(root.right, set);
             return;
-        inOrder(root.left);
-        s.add(root.val);
-        inOrder(root.right);
-    }
+        }
 }
