@@ -16,8 +16,6 @@
 class Solution {
     Set<Integer> s = new TreeSet<>();
     public int findSecondMinimumValue(TreeNode root) {
-        if(root.left==null && root.right==null)
-            return -1;
         inOrder(root);
         if(s.size()<2)
             return -1;
