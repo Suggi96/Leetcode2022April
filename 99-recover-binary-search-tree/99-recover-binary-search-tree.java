@@ -14,25 +14,41 @@
  * }
  */
 class Solution {
-    List<Integer> list = new ArrayList<>();
-    int i = 0;
+    TreeNode prev, first, middle, last;
     public void recoverTree(TreeNode root) {
-        makeList(root);
-        Collections.sort(list);
+        first = middle = last = null;
+        prev = new TreeNode(Integer.MIN_VALUE);
         inOrder(root);
+        //case 1: if swapped nodes are not adjacent
+        if(first!=null && last!=null) {
+            int t = first.val;
+            first.val = last.val;
+            last.val = t;
+        }
+        //case 2: if swapped nodes are adjacent
+        else if(first!=null && middle!=null) {
+            int t = first.val;
+            first.val = middle.val;
+            middle.val = t;
+        }
     }
     private void inOrder(TreeNode root) {
         if(root==null)
             return;
         inOrder(root.left);
-        root.val = list.get(i++);
+        //incorrect arrangement ie not in ascending order
+        if(prev!=null && root.val<prev.val) {
+            //first node out of place
+            if(first==null) {
+              first = prev;
+              middle = root;  
+            }
+            //second node out of place
+            else {
+                last = root;
+            }
+        }
+        prev = root; //store the cur processed node as prev. Useful in next recursion 
         inOrder(root.right);
-    }
-    private void makeList(TreeNode root) {
-        if(root==null)
-            return;
-        makeList(root.left);
-        list.add(root.val);
-        makeList(root.right);
     }
 }
