@@ -20,11 +20,12 @@ class Solution {
     private int total(TreeNode root, int sum) {
         if(root==null)
             return 0;
+        
         sum = (2 * sum) + root.val;
+        
         if(root.left==null && root.right==null)
             return sum;
-        int leftSum = total(root.left, sum);
-        int rightSum = total(root.right, sum);
-        return leftSum + rightSum;
+   
+        return total(root.left, sum) + total(root.right, sum);
     }
 }
