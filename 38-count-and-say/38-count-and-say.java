@@ -1,28 +1,25 @@
 class Solution {
     public String countAndSay(int n) {
-        String s = "1";
-        for(int i=1;i<n;i++) {
-            s = countIdx(s);
-        }
-        return s;
-    }
-    private String countIdx(String s) {
-        char c = s.charAt(0);
-        int count = 1;
-        StringBuilder res = new StringBuilder();
-        for(int i=1;i<s.length();i++) {
-            if(c==s.charAt(i)) {
-                count++;
+        if(n<=0)
+            return "";
+
+        String res ="1";
+        while(n>1) {
+            StringBuilder cur = new StringBuilder();
+            for(int i=0;i<res.length();i++) {
+                int count = 1;
+                while(i+1<res.length() && res.charAt(i)==res.charAt(i+1)) {
+                   i++;
+                   count++;
+                }
+                cur.append(count);
+                cur.append(res.charAt(i));
             }
-            else {
-                res.append(count);
-                res.append(c);
-                c = s.charAt(i);
-                count = 1;
-            }
+            res = cur.toString();
+            n--;
         }
-        res.append(count);
-        res.append(c);
-        return res.toString();
+        
+        
+        return res;
     }
 }
