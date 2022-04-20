@@ -14,31 +14,28 @@
  * }
  */
 class BSTIterator {
-    List<Integer> list = null;
-    int ptr;
+    Stack<TreeNode> st = null;
     public BSTIterator(TreeNode root) {
-        list = new ArrayList<>();
-        ptr = 0;
-        inOrder(root, list);
+        st = new Stack<>();
+        partialInorder(root);
     }
-    private void inOrder(TreeNode root, List<Integer> list) {
-        if(root==null)
-            return;
-        inOrder(root.left, list);
-        list.add(root.val);
-        inOrder(root.right, list);
+    private void partialInorder(TreeNode cur) {
+        while(cur!=null) {
+            st.push(cur);
+            cur = cur.left;
+        }
     }
+    
     public int next() {
-        int ans = list.get(ptr);
-        ptr++;
-        return ans;
-
+        TreeNode cur = st.pop();
+        partialInorder(cur.right);
+        return cur.val;
     }
     
     public boolean hasNext() {
-        if(ptr == list.size())
-            return false;
-        return true;
+        if(st.isEmpty()==false)
+            return true;
+        return false;
     }
 }
 
