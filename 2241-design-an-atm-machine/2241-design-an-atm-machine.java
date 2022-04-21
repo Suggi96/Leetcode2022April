@@ -1,9 +1,9 @@
 class ATM {
-    long[] deno = new long[5];
-    Map<Integer, Integer> map = new HashMap<>();
+    HashMap<Integer, Integer> map;
+    long[] deno;
     public ATM() {
-        for(int i=0;i<5;i++)
-            deno[i] = 0;
+        deno = new long[5];
+        map = new HashMap<>();
         map.put(4, 500);
         map.put(3, 200);
         map.put(2, 100);
@@ -19,24 +19,24 @@ class ATM {
     
     public int[] withdraw(int amount) {
         int[] ans = new int[5];
+        int[] invalid = {-1};
         for(int i=4;i>=0;i--) {
             if(amount>=map.get(i)) {
-                int count = amount / map.get(i);
-                if(count>deno[i]) count = (int)deno[i];
-                deno[i] -= count;
-                amount -= (count*map.get(i));
-                ans[i] += count;
+                int notes = amount/map.get(i);
+                if(notes>deno[i]) notes = (int)deno[i];
+                //update deno[i] and remaining amount and ans array
+                deno[i] -= notes;
+                ans[i] += notes;
+                amount = amount - (notes*map.get(i));
             }
-            
         }
         if(amount==0)
-                return ans;
-            else {
-                for(int i=0;i<5;i++)
-                    deno[i] += ans[i];
-                int[] tmp = {-1};
-                return tmp;
-            }
+            return ans;
+        //handling amount!=0 so reset deno array using ans
+        for(int i=0;i<5;i++)
+            deno[i] += ans[i];
+        return invalid;
+        
     }
 }
 
