@@ -4,10 +4,6 @@ public class Codec {
     String prefix = "https://leetcode.com/";
     // Encodes a URL to a shortened URL.
     public String encode(String longUrl) {
-        // String key = prefix + count;
-        // count++;
-        // map.put(key, longUrl);
-        // return key;
         StringBuilder key = new StringBuilder();
         key.append(prefix);
         key.append(String.valueOf(count));
@@ -19,8 +15,6 @@ public class Codec {
 
     // Decodes a shortened URL to its original URL.
     public String decode(String shortUrl) {
-        // String key = prefix + (count-1);
-        // return map.get(key);
         return map.get(shortUrl);
     }
 }
