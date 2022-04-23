@@ -21,10 +21,7 @@ public class Codec {
     public String decode(String shortUrl) {
         // String key = prefix + (count-1);
         // return map.get(key);
-        StringBuilder key = new StringBuilder();
-        key.append(prefix);
-        key.append(String.valueOf(count-1));
-        return map.get(key.toString());
+        return map.get(shortUrl);
     }
 }
 
