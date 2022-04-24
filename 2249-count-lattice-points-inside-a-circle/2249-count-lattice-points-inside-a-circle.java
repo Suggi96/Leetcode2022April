@@ -1,13 +1,12 @@
 class Solution {
     public int countLatticePoints(int[][] circles) {
-        HashSet<String> res = new HashSet<String>();
-    for(int[] arr : circles){
-        int x = arr[0], y = arr[1], r = arr[2];
-        for(int i=x-r; i<=x+r; i++)
-            for(int j=y-r; j<=y+r; j++)
-                if((x-i)*(x-i) + (y-j)*(y-j) <= r*r)
-                    res.add(i+","+j);
-    }
-    return res.size();
-    }
+         int cnt = 0;
+    for (int x = 0; x <= 200; x++)
+        for (int y = 0; y <= 200; y++)
+            for (int[] c : circles)
+                if ((c[0] - x) * (c[0] - x) + (c[1] - y) * (c[1] - y) <= c[2]*c[2]){
+                    cnt++; break;
+                }
+    return cnt;
+}
 }
