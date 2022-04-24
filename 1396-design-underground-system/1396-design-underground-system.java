@@ -33,7 +33,8 @@ class UndergroundSystem {
         List<Integer> list = map2.get(key);
         for(int i: list)
             sum += i;
-        return sum/(double)n;
+       double avg = sum/(double)n;
+        return avg;
     }
 }
 
