@@ -1,19 +1,17 @@
 class Solution {
     public List<Integer> intersection(int[][] nums) {
-        int count = nums.length;
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i=0;i<nums.length;i++) {
-            for(int j=0;j<nums[i].length;j++) {
-                map.put(nums[i][j], map.getOrDefault(nums[i][j], 0)+1);
+        int[] count = new int[1001];
+        for(int[] row: nums) {
+            for(int i: row) {
+                count[i]++;
             }
         }
-        List<Integer> list = new ArrayList<>();
-        for(Map.Entry<Integer, Integer> e: map.entrySet()) {
-            if(e.getValue()==count) {
-                list.add(e.getKey());
-            }
+        List<Integer> res = new ArrayList<>();
+        int freq = nums.length;
+        for(int i=0;i<count.length;i++) {
+            if(count[i]==freq)
+                res.add(i);
         }
-        Collections.sort(list);
-        return list;
+        return res;
     }
 }
