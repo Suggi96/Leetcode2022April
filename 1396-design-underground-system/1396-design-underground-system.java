@@ -27,15 +27,13 @@ class UndergroundSystem {
     }
     
     public double getAverageTime(String startStation, String endStation) {
-        double avg = 0;
         int sum = 0;
         String key = startStation + "->" + endStation;
         int n = map2.get(key).size();
         List<Integer> list = map2.get(key);
         for(int i: list)
             sum += i;
-        avg = sum/(double)n;
-        return avg;
+        return sum/(double)n;
     }
 }
 
