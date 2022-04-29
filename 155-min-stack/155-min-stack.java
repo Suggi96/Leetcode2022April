@@ -13,8 +13,10 @@ class MinStack {
         if(val < curEl[1]) {
             st.push(new int[] {val, val});
         }
-        else 
+        else {
             st.push(new int[] {val, curEl[1]});
+        }
+            
     }
     
     public void pop() {
