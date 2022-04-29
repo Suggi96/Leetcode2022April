@@ -24,8 +24,7 @@ class MinStack {
     }
     
     public int top() {
-        int[] curEl = st.peek();
-        return curEl[0];
+        return st.peek()[0];
     }
     
     public int getMin() {
