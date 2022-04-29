@@ -7,7 +7,7 @@ class Solution {
             if(color[i]==-1) {
                 color[i] = 0; 
             }
-            if(!dfs(i, color, graph))
+            if(!dfs(i, color, graph)) //process the node at index i
                 return false;
         }
         return true;
