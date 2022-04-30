@@ -5,7 +5,7 @@ class Solution {
         return res;
     }
     private void backTrack(List<String> res, String curString, int open, int close, int max) {
-        if(curString.length()==2*max) {
+        if(open==max && close==max) {
             res.add(curString);
             return;
         }
