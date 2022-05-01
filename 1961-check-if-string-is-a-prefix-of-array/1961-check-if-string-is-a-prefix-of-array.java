@@ -7,6 +7,8 @@ class Solution {
             if(str.toString().equals(s))
                 return true;
             i++;
+            if(str.toString().length()>s.length())
+                return false;
         }
         return false;
     }
