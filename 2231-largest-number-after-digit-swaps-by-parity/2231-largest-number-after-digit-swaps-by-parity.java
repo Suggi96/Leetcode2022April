@@ -11,16 +11,16 @@ class Solution {
                 odd.add(digit);
             num = num / 10;
         }
-        String res = new String();
+        StringBuilder res = new StringBuilder();
         for(int i=0;i<n.length();i++) {
             int val = Integer.parseInt(n.charAt(i) + "");
             if(val%2==0) {
-                res += "" + even.remove();
+                res.append(even.remove());
             }
             else {
-                res += "" + odd.remove();
+                res.append(odd.remove());
             }
         }
-        return Integer.parseInt(res);
+        return Integer.parseInt(res.toString());
     }
 }
