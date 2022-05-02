@@ -1,15 +1,14 @@
 class Solution {
     public int[] sortArrayByParity(int[] nums) {
-        int i = 0;
-        int j = nums.length-1;
-        while(i<j) {
-            if(nums[i]%2 > nums[j]%2) {
-                int temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
+       int start = 0, end = nums.length - 1;
+        while (start < end) {
+            if (nums[start] % 2 == 0) {
+                start++;
+            } else {
+                int tmp = nums[end];
+                nums[end--] = nums[start];
+                nums[start] = tmp;
             }
-            if(nums[i]%2==0) i++;
-            if(nums[j]%2==1) j--;
         }
         return nums;
     }
