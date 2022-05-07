@@ -8,10 +8,8 @@ class Solution {
             else {
                 //matching case
                 Pair<Character, Integer> p = st.pop();
-                int freq = p.getValue();
-                st.push(new Pair(c, freq+1));
-                freq = st.peek().getValue();
-                if(freq==k) {
+                st.push(new Pair(c, p.getValue()+1));
+                if(st.peek().getValue()==k) {
                     st.pop();
                 }
             }
