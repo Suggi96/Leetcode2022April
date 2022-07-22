@@ -17,24 +17,24 @@ class Solution {
         
         while(head!=null) {
             if(head.val<x) {
-                ListNode temp = new ListNode(head.val);
+           //     ListNode temp = new ListNode(head.val);
                 if(l1head==null) {
-                    l1head = temp;
-                    l1 = temp;
+                    l1head = head;
+                    l1 = head;
                 }
                 else {
-                    l1.next = temp;
+                    l1.next = head;
                     l1 = l1.next;
                 }
             }
             else {
-                ListNode temp = new ListNode(head.val);
+              //  ListNode temp = new ListNode(head.val);
                 if(l2head==null) {
-                    l2head = temp;
-                    l2 = temp;
+                    l2head = head;
+                    l2 = head;
                 }
                 else {
-                    l2.next = temp;
+                    l2.next = head;
                     l2 = l2.next;
                 }
             }
@@ -47,6 +47,7 @@ class Solution {
             return l1head;
         
         l1.next = l2head;
+        l2.next = null;
        return l1head;
         
     }
