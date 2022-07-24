@@ -1,16 +1,24 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-       int r = 0, c = matrix[0].length-1;
-       //starting from top right corner element as pivot
-       while(r<matrix.length &&  c>=0) {
-           int pivot = matrix[r][c];
-           if(target==pivot) 
-               return true;
-           else if(target<pivot)
-               c--;
-           else
-               r++;
-       }
+        int m = matrix.length;
+        int n = matrix[0].length;
+        
+        if(m==0 || n==0)
+            return false;
+        
+        int i = m-1;
+        int j = 0;
+        while(i>=0 && j<n) {
+            if(matrix[i][j]==target)
+                return true;
+            
+            if(matrix[i][j]>target)
+                i--;
+            
+            else
+                j++;
+                
+        }
         return false;
     }
 }
