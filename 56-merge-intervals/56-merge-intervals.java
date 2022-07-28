@@ -16,7 +16,15 @@ class Solution {
                 end = i[1];
             }
         }
-         res.add(new int[] {start, end});
-        return res.toArray(new int[0][]);
+        res.add(new int[] {start, end});
+        int n = res.size();
+        int[][] ans = new int[n][2];
+        int k = 0;
+        for(int[] arr: res) {
+            ans[k][0] = arr[0];
+            ans[k][1] = arr[1];
+            k++;
+        }
+        return ans;
     }
 }
