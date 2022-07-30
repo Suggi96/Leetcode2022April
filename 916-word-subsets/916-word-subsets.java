@@ -10,6 +10,7 @@ class Solution {
         }
         
         //now check if for each aStr if freqA >= maxFreqB then aStr is valid answer
+        //if freqA < maxFreqB its invalid answer
         for(String aStr: A) {
             int[] freqA = getFreq(aStr);
             boolean valid = true;
