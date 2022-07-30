@@ -1,31 +1,33 @@
 class Solution {
     public List<String> wordSubsets(String[] A, String[] B) {
+        //building maxFreq array for entire B
+        int[] maxFreqB = new int[26];
         List<String> res = new ArrayList<>();
-        int[] maxFreqAccrossB = new int[26];
         for(String bStr: B) {
-            int[] freqbStr = getFreq(bStr);
+            int[] temp = getFreq(bStr);
             for(int i=0;i<26;i++) 
-                maxFreqAccrossB[i] = Math.max(maxFreqAccrossB[i], freqbStr[i]);
+                maxFreqB[i] = Math.max(maxFreqB[i], temp[i]);
         }
+        
+        //now check if for each aStr if freqA >= maxFreqB then aStr is valid answer
         for(String aStr: A) {
-            int[] freqaStr = getFreq(aStr);
-            boolean foundAll = true;
+            int[] freqA = getFreq(aStr);
+            boolean valid = true;
             for(int i=0;i<26;i++) {
-                if(freqaStr[i]<maxFreqAccrossB[i]) {
-                    foundAll = false;
+                if(freqA[i]<maxFreqB[i]) {
+                    valid = false;
                     break;
                 }
             }
-            if(foundAll)
+            if(valid)
                 res.add(aStr);
         }
         return res;
     }
     private int[] getFreq(String s) {
         int[] freq = new int[26];
-        for(char c: s.toCharArray()) {
+        for(char c: s.toCharArray())
             freq[c - 'a']++;
-        }
         return freq;
     }
 }
