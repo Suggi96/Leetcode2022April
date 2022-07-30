@@ -1,34 +1,28 @@
 class Solution {
     public List<String> wordSubsets(String[] A, String[] B) {
-        //building maxFreq array for entire B
-        int[] maxFreqB = new int[26];
-        List<String> res = new ArrayList<>();
-        for(String bStr: B) {
-            int[] temp = getFreq(bStr);
-            for(int i=0;i<26;i++) 
-                maxFreqB[i] = Math.max(maxFreqB[i], temp[i]);
+        int[] bmax = count("");
+        for (String b: B) {
+            int[] bCount = count(b);
+            for (int i = 0; i < 26; ++i)
+                bmax[i] = Math.max(bmax[i], bCount[i]);
         }
-        
-        //now check if for each aStr if freqA >= maxFreqB then aStr is valid answer
-        //if freqA < maxFreqB its invalid answer
-        for(String aStr: A) {
-            int[] freqA = getFreq(aStr);
-            boolean valid = true;
-            for(int i=0;i<26;i++) {
-                if(freqA[i]<maxFreqB[i]) {
-                    valid = false;
-                    break;
-                }
-            }
-            if(valid)
-                res.add(aStr);
+
+        List<String> ans = new ArrayList();
+        search: for (String a: A) {
+            int[] aCount = count(a);
+            for (int i = 0; i < 26; ++i)
+                if (aCount[i] < bmax[i])
+                    continue search;
+            ans.add(a);
         }
-        return res;
+
+        return ans;
     }
-    private int[] getFreq(String s) {
-        int[] freq = new int[26];
-        for(char c: s.toCharArray())
-            freq[c - 'a']++;
-        return freq;
+
+    public int[] count(String S) {
+        int[] ans = new int[26];
+        for (char c: S.toCharArray())
+            ans[c - 'a']++;
+        return ans;
     }
 }
