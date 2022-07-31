@@ -38,38 +38,38 @@ public class NumArray {
     }
    
     void update(int i, int val) {
-        update(root, i, val);
+        updateHelper(root, i, val);
     }
    
-    void update(SegmentTreeNode root, int pos, int val) {
+    void updateHelper(SegmentTreeNode root, int pos, int val) {
         if (root.start == root.end) {
            root.sum = val;
         } else {
             int mid = root.start + (root.end - root.start) / 2;
             if (pos <= mid) {
-                 update(root.left, pos, val);
+                 updateHelper(root.left, pos, val);
             } else {
-                 update(root.right, pos, val);
+                 updateHelper(root.right, pos, val);
             }
             root.sum = root.left.sum + root.right.sum;
         }
     }
 
     public int sumRange(int i, int j) {
-        return sumRange(root, i, j);
+        return sumRangeHelper(root, i, j);
     }
     
-    public int sumRange(SegmentTreeNode root, int start, int end) {
+    public int sumRangeHelper(SegmentTreeNode root, int start, int end) {
         if (root.end == end && root.start == start) {
             return root.sum;
         } else {
             int mid = root.start + (root.end - root.start) / 2;
             if (end <= mid) {
-                return sumRange(root.left, start, end);
+                return sumRangeHelper(root.left, start, end);
             } else if (start >= mid+1) {
-                return sumRange(root.right, start, end);
+                return sumRangeHelper(root.right, start, end);
             }  else {    
-                return sumRange(root.right, mid+1, end) + sumRange(root.left, start, mid);
+                return sumRangeHelper(root.right, mid+1, end) + sumRangeHelper(root.left, start, mid);
             }
         }
     }
