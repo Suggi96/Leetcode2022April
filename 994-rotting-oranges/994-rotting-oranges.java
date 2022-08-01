@@ -16,6 +16,7 @@ class Solution {
         int[][] direction = {{0,1}, {0, -1}, {1, 0}, {-1, 0}};
         while(q.size()!=0 && fresh>0) {
             int len = q.size();
+            time++;
             for(int i=0;i<len;i++) {
                 int[] arr = q.remove();
                 for(int[] dir: direction) {
@@ -28,7 +29,6 @@ class Solution {
                     fresh--;
                 }
             }
-            time++;
         }
         if(fresh!=0)
             return -1;
