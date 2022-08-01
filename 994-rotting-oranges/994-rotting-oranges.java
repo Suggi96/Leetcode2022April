@@ -30,8 +30,6 @@ class Solution {
                 }
             }
         }
-        if(fresh!=0)
-            return -1;
-        return time;
+        return fresh!=0 ? -1 : time;
     }
 }
