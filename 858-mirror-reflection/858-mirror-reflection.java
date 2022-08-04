@@ -10,9 +10,9 @@ class Solution {
         if(n%2==0)
             return 2;
         
-        else if(m%2==1) //n is definitely odd and m is even
+        else if(m%2==1) //n is definitely odd and m is odd
             return 1;
-        else            //n is definitely odd and m is odd too
+        else            //n is definitely odd and m is even
             return 0;
     }
 }
