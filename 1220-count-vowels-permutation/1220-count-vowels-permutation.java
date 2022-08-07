@@ -1,25 +1,23 @@
 class Solution {
     public int countVowelPermutation(int n) {
-       int[][] dp = new int[n+1][5];
-       int mod = (int)1e9 + 7;
-        int a = 0, e = 1, i = 2, o = 3, u = 4;
-        Arrays.fill(dp[1], 1);
-        
-        for (int j = 2; j <= n; j++) {
-            dp[j][a] += (((dp[j-1][e] + dp[j-1][i]) % mod) + dp[j-1][u]) % mod;
-            dp[j][e] += (dp[j-1][a] + dp[j-1][i]) % mod;            
-            dp[j][i] += (dp[j-1][e] + dp[j-1][o]) % mod;
-            dp[j][o] += dp[j-1][i] % mod;
-            dp[j][u] += (dp[j-1][i] + dp[j-1][o]) % mod;
-        }                
-        
-        int res = 0;
-        for (int j = 0; j < 5; j++) {
-            res += dp[n][j];
-            res %= mod;
+        List<int[]> dp = new ArrayList<>();
+        dp.add(new int[] {0,0,0,0,0});
+        dp.add(new int[] {1,1,1,1,1});
+        int a=0, e=1, i=2, o=3, u=4;
+        int mod = (int)(1e9 + 7);
+        for(int j=2;j<=n;j++) {
+            dp.add(new int[] {0,0,0,0,0});
+            dp.get(j)[a] += ((dp.get(j-1)[e] + dp.get(j-1)[i])%mod + dp.get(j-1)[u])%mod;
+            dp.get(j)[e] += (dp.get(j-1)[a] + dp.get(j-1)[i])%mod;
+            dp.get(j)[i] += (dp.get(j-1)[e] + dp.get(j-1)[o])%mod;
+            dp.get(j)[o] += (dp.get(j-1)[i])%mod;
+            dp.get(j)[u] += (dp.get(j-1)[i] + dp.get(j-1)[o])%mod;
         }
-        
+        int[] arr = dp.get(n);
+        int res = 0;
+        for(int x: arr) {
+            res = (res + x)%mod;
+        }
         return res;
-        
-    }
+    } 
 }
