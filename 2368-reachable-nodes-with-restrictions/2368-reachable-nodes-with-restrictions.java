@@ -1,26 +1,23 @@
 class Solution {
+    int count = 0;
     public int reachableNodes(int n, int[][] edges, int[] restricted) {
         List<List<Integer>> graph = buildGraph(edges, n);
         boolean[] vis = new boolean[n];
-        Set<Integer> set = new HashSet<>();
-        for(int i: restricted)
-            set.add(i);
-        Queue<Integer> q = new LinkedList<>();
-        q.add(0);
-        int count = 0;
-        vis[0] = true;
-        while(!q.isEmpty()) {
-            int curNode = q.remove();
-            vis[curNode] = true;
-            count++;
-            for(int neigh: graph.get(curNode)) {
-                if(!vis[neigh] && !set.contains(neigh)) {
-                    q.add(neigh);
-                }
-            }
-        }
+        for(int x: restricted)
+            vis[x] = true;
+        
+        dfs(0, vis, graph);
         return count;
         
+    }
+    private void dfs(int v, boolean[] vis, List<List<Integer>> graph) {
+        vis[v] = true;
+        count++;
+        for(int neigh: graph.get(v)) { 
+            if(!vis[neigh]) {
+                dfs(neigh, vis, graph);
+            }
+        }
     }
     private List<List<Integer>> buildGraph(int[][] edges, int n) {
         List<List<Integer>> g = new ArrayList<>();
