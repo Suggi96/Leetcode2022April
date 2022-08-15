@@ -7,19 +7,17 @@ class Solution {
             set.add(i);
         Queue<Integer> q = new LinkedList<>();
         q.add(0);
+        int count = 0;
         vis[0] = true;
         while(!q.isEmpty()) {
             int curNode = q.remove();
             vis[curNode] = true;
+            count++;
             for(int neigh: graph.get(curNode)) {
                 if(!vis[neigh] && !set.contains(neigh)) {
                     q.add(neigh);
                 }
             }
-        }
-        int count = 0;
-        for(int i=0;i<vis.length;i++) {
-            if(vis[i]) count++;
         }
         return count;
         
