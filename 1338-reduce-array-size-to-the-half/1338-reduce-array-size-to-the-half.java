@@ -11,13 +11,13 @@ class Solution {
             pq.add(new Pair<Integer, Integer>(e.getKey(), e.getValue()));
         }
         int n = arr.length;
-        List<Integer> list = new ArrayList<>();
-        int count = 0;
+     //   List<Integer> list = new ArrayList<>();
+        int count = 0, ans = 0;
         while(!pq.isEmpty() && count<n/2) {
             Pair<Integer, Integer> p = pq.remove();
             count += p.getValue();
-            list.add(p.getKey());
+            ans++;
         }
-        return list.size();
+        return ans;
     }
 }
