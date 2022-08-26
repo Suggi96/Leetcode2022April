@@ -5,7 +5,7 @@ class Solution {
         for(int i=0;i<31;i++) {
             if(Arrays.equals(counter, count(num)))
                 return true;
-            num = num<<1;
+            num = (int)Math.pow(2, i);
         }
         return false;
     }
