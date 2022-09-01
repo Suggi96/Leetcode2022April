@@ -17,15 +17,20 @@ class Solution {
     public int goodNodes(TreeNode root) {
         if(root==null)
             return 0;
-        return dfs(root, Integer.MIN_VALUE);
+        int[] ans = {0};
+        dfs(root, Integer.MIN_VALUE, ans);
+        return ans[0];
     }
-    private int dfs(TreeNode root, int prevMax) {
+    private void dfs(TreeNode root, int curMax, int[] ans) {
         if(root==null)
-            return 0;
-        prevMax = Math.max(prevMax, root.val);
-        if(root.val>=prevMax) 
-         return 1 + dfs(root.left, prevMax) + dfs(root.right, prevMax);
-        else
-          return dfs(root.left, prevMax) + dfs(root.right, prevMax);
+            return;
+        
+        if(root.val>=curMax) {
+            curMax = root.val;
+            ans[0]++;
+        }
+        
+        dfs(root.left,curMax,ans);
+        dfs(root.right,curMax,ans);
     }
 }
