@@ -31,7 +31,8 @@ class Solution {
             for(int i=0;i<len;i++) {
                 Node curNode = q.poll();
                 temp.add(curNode.val);
-                q.addAll(curNode.children);
+                for(Node n: curNode.children)
+                    q.add(n);
             }
             res.add(temp);
         }
