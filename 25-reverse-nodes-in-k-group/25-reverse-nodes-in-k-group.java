@@ -16,14 +16,14 @@ class Solution {
             ListNode kth = getkth(groupPrev, k);
             if(kth==null) break;
             ListNode groupNext = kth.next;
-            ListNode prev = kth.next; //if i set to null linkedlist gets splitted
-            ListNode cur = groupPrev.next; //first node in our group
+            ListNode prev = kth.next, cur = groupPrev.next;
             while(cur!=groupNext) {
                 ListNode nextNode = cur.next;
                 cur.next = prev;
                 prev = cur;
                 cur = nextNode;
             }
+            //adjust groupPrev for next iteration
             ListNode tmp = groupPrev.next;
             groupPrev.next = kth;
             groupPrev = tmp;
