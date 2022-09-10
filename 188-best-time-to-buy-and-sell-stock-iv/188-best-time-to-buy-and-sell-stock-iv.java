@@ -11,20 +11,14 @@ class Solution {
             return 0;
         if(dp[idx][transNo]!=-1)
             return dp[idx][transNo];
-        int ans = 0;
+        
         if(transNo%2==0) {
-            int buy = -prices[idx] + f(idx+1, transNo+1, prices, n, k, dp);
-            int idle = f(idx+1, transNo, prices, n, k, dp);
-            ans = Math.max(buy, idle);
-            dp[idx][transNo] = ans;
-            return ans;
+            return dp[idx][transNo] = Math.max(-prices[idx] + f(idx+1, transNo+1, prices, n, k, dp),
+                                       f(idx+1, transNo, prices, n, k, dp));
         } 
         else {
-            int sell = prices[idx] + f(idx+1, transNo+1, prices, n, k, dp);
-            int idle = f(idx+1, transNo, prices, n, k, dp);
-            ans = Math.max(sell, idle);
-            dp[idx][transNo] = ans;
-            return ans;
+            return dp[idx][transNo] = Math.max(prices[idx] + f(idx+1, transNo+1, prices, n, k, dp),
+                                       f(idx+1, transNo, prices, n, k, dp));
         }
     }
 }
