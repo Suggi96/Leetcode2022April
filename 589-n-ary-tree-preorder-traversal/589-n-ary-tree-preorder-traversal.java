@@ -19,16 +19,16 @@ class Node {
 
 class Solution {
     public List<Integer> preorder(Node root) {
-        List<Integer> res = new ArrayList<>();
-        NpreOrder(root, res);
-        return res;
+        List<Integer> ans = new ArrayList<>();
+        helper(root, ans);
+        return ans;
     }
-    private void NpreOrder(Node root, List<Integer> res) {
+    private void helper(Node root, List<Integer> ans) {
         if(root==null)
             return;
-        res.add(root.val);
-        for(Node curChild: root.children) {
-            NpreOrder(curChild, res);
+        ans.add(root.val);
+        for(Node child: root.children) {
+            helper(child, ans);
         }
         return;
     }
