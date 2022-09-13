@@ -28,8 +28,7 @@ class Solution {
             int size = q.size();
             for(int i=0;i<size;i++) {
                 Node curNode = q.remove();
-                List<Node> allChildren = curNode.children;
-                for(Node child: allChildren)
+                for(Node child: curNode.children)
                     q.add(child);
             }
             depth++;
