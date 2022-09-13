@@ -5,7 +5,8 @@ class Solution {
         {
             int index = Math.abs(nums[i])-1;
             if(nums[index]<0) output_arr.add(Math.abs(nums[i]));
-            nums[index]= -nums[index];
+            else 
+                nums[index]= -nums[index];
         }
         return output_arr;
     }
