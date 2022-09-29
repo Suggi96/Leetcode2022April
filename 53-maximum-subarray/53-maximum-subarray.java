@@ -1,13 +1,13 @@
 class Solution {
     public int maxSubArray(int[] nums) {
-        int maxSum = Integer.MIN_VALUE;
-        int curSum = 0;
+        //kadanes algorithm
+        int meh = 0;
+        int msf = Integer.MIN_VALUE;
         for(int i=0;i<nums.length;i++) {
-            curSum += nums[i];
-            maxSum = Math.max(maxSum, curSum);
-            if(curSum<0)
-                curSum = 0;
+            meh = meh + nums[i];
+            meh = Math.max(meh, nums[i]);
+            msf = Math.max(msf, meh);
         }
-        return maxSum;
+        return msf;
     }
 }
