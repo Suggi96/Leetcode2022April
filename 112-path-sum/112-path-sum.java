@@ -23,10 +23,9 @@ class Solution {
         
     }
     private void dfs(TreeNode root, int sum, int targetSum, boolean[] found) {
-        if(root==null) return;
-        if(root.left==null && root.right==null) {
-            sum += root.val;
-            if(sum==targetSum)
+        if(root==null) 
+            return;
+        if(root.left==null && root.right==null && (sum += root.val)==targetSum) {
             found[0] = true;
         }
         
